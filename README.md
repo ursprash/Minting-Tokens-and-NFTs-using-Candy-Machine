@@ -44,7 +44,7 @@ Now to fund your wallet you can run the command:
 solana airdrop 5
 ```
 
-### Prepare NFT Assets
+## Prepare NFT Assets
 1.Configure Candy Machine
 Create a new file, config.json in your root project folder: 
 
@@ -86,7 +86,7 @@ Open the file and paste this config:
 sugar validate
 ```
 
-### Create Candy Machine
+## Create Candy Machine
 
 1.Upload Your Assets:
 ```bash
@@ -122,7 +122,8 @@ REACT_APP_SOLANA_NETWORK=devnet
 REACT_APP_SOLANA_RPC_HOST=<YOUR_QUICKNODE_DEVNET_ENDPOINT>
 ```
 If you don't remember your Candy Machine ID, you should be able to find it in cache.json in the program.candyMachine field. 
-###NOTE:IN candy-machine ui update package.json file(in script section):  
+
+### NOTE:IN candy-machine ui update package.json file(in script section):  
 ```bash
 "scripts": {
     "start": "export SET NODE_OPTIONS=--openssl-legacy-provider && craco start",
@@ -134,6 +135,7 @@ If you don't remember your Candy Machine ID, you should be able to find it in ca
     "eject": "craco eject"
   },
 ```
+
 With all of that information plugged in, you can now save the file. From that candy-machine-ui folder, run the following commands:
 ```bash
 npm install
@@ -152,6 +154,16 @@ Edit the `config.json` file to configure your Candy Machine and SPL token settin
 
 1. Start the development server: `npm start`
 2. Open your browser and navigate to `http://localhost:3000` to use the UI.
+
+## Output Of UI:
+![Screenshot 2023-09-22 223313](https://github.com/ursprash/Minting-Tokens-and-NFTs-using-Candy-Machine/assets/111697531/d5720e4a-e059-4b11-ac82-eac84187b4e8)
+
+![2](https://github.com/ursprash/Minting-Tokens-and-NFTs-using-Candy-Machine/assets/111697531/6a02335f-9131-4e15-8821-deacfd7c8876)
+
+![4](https://github.com/ursprash/Minting-Tokens-and-NFTs-using-Candy-Machine/assets/111697531/ed46930d-2c0e-42ed-9dfb-182f76b8819b)
+
+![3](https://github.com/ursprash/Minting-Tokens-and-NFTs-using-Candy-Machine/assets/111697531/afa5a7cb-1c99-43fe-9f01-7f9f9ecdb8e5)
+
 
 ## Contributor
 ursprash
