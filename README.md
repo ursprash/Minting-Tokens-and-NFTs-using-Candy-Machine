@@ -23,27 +23,37 @@ Creating a full UI for a Candy Machine and setting up an SPL token involves mult
 ```bash
 solana-keygen new --outfile ./wallet.json
 ```
+
 We can skip the password (by hitting Enter) as we will only use this wallet on devnet, so the funds are not important. We can confirm that the wallet we just generated is the wallet that the Solana CLI will use by running: 
+
 ```bash
 solana config set --keypair ./wallet.json
 ```
+
 4.Establish a Connection to Your QuickNode RPC
 We will need to make sure our Solana CLI is connected to a node. You're welcome to use public nodes or deploy and manage your own infrastructure, however, if you'd like 8x faster response times you can leave the heavy lifting to us.
 With your endpoint on the Solana Devnet setup, you can now run this command, substituting YOUR_QUICKNODE_URL with the HTTP URL you have copied:
+
 ```bash
 solana config set --url YOUR_QUICKNODE_URL
 ```
+
 Now to fund your wallet you can run the command:
+
 ```bash
 solana airdrop 5
 ```
+
 ### Prepare NFT Assets
 1.Configure Candy Machine
 Create a new file, config.json in your root project folder: 
+
 ```bash
 echo > config.json
 ```
+
 Open the file and paste this config: 
+
 ```bash
 {
     "price": 0.01,
@@ -70,40 +80,69 @@ Open the file and paste this config:
   ]
 }
 ```
+
 2.Sugar has a built in validation error that will let us check for any errors before we proceed. In terminal, run: 
 ```bash
 sugar validate
 ```
 
+### Create Candy Machine
 
-**4. Configure Your Project:**
-   - Modify your `config.json` to include the SPL token address you created earlier.
-   - You can also configure other parameters related to your Candy Machine.
+1.Upload Your Assets:
+```bash
+sugar upload
+```
+2.Deploy Candy Machine:
 
-**5. Create UI Components:**
-   - Design and implement your UI components for minting NFTs from the Candy Machine.
-   - You can use libraries like React Bootstrap, Material-UI, or custom CSS for styling.
+```bash
+sugar deploy
+```
+3.Verify Candy Machine:
 
-**6. Implement Candy Machine Integration:**
-   - Use the Solana and Metaplex libraries to integrate with your Candy Machine.
-   - You'll need to call functions like `startMint`, `mintOneToken`, etc., depending on your Candy Machine's configuration.
+```bash
+sugar verify
+```
+4.Test Your Candy Machine:
+```bash
+sugar mint
+```
+5.Set Up a Minting Site
+For the easiest possible set up, we will be using the front end that Metaplex provides us, Candy Machine UI. 
 
-**7. Create ReadMe File:**
-   - Write a README.md file to explain how to set up, run, and use your application.
-   - Include instructions for installing dependencies, configuring the environment, and using the UI.
+From your project directory, in your terminal enter: 
+```bash
+git clone https://github.com/metaplex-foundation/candy-machine-ui ./candy-machine-ui/
+cd candy-machine-ui
+```
+Rename the file .env.example to .env. After changing the file name, you can change the values in there to the following:
 
-Here's a basic structure for your README.md file:
-
-```markdown
- Candy Machine UI
-
-This is a user interface for minting NFTs from a Candy Machine on the Solana blockchain.
+```bash
+REACT_APP_CANDY_MACHINE_ID=<YOUR_CANDY_MACHINE_PUBKEY>
+REACT_APP_SOLANA_NETWORK=devnet
+REACT_APP_SOLANA_RPC_HOST=<YOUR_QUICKNODE_DEVNET_ENDPOINT>
+```
+If you don't remember your Candy Machine ID, you should be able to find it in cache.json in the program.candyMachine field. 
+###NOTE:IN candy-machine ui update package.json file(in script section):  
+```bash
+"scripts": {
+    "start": "export SET NODE_OPTIONS=--openssl-legacy-provider && craco start",
+    "lint": "prettier -c 'src/**/*.{ts,tsx}' && npm run lint:eslint",
+    "lint:eslint": "eslint 'src/**/*.{ts,tsx}'",
+    "lint:fix": "prettier --write 'src/**/*.{ts,tsx}' && eslint --fix 'src/**/*.{ts,tsx}'",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject"
+  },
+```
+With all of that information plugged in, you can now save the file. From that candy-machine-ui folder, run the following commands:
+```bash
+npm install
+npm start
+```
 
 ## Installation
 
-1. Clone this repository: `git clone <repository-url>`
-2. Navigate to the project folder: `cd candy-machine-ui`
-3. Install dependencies: `npm install`
+1. Clone this repository: `https://github.com/ursprash/Minting-Tokens-and-NFTs-using-Candy-Machine.git`
 
 ## Configuration
 
@@ -114,11 +153,8 @@ Edit the `config.json` file to configure your Candy Machine and SPL token settin
 1. Start the development server: `npm start`
 2. Open your browser and navigate to `http://localhost:3000` to use the UI.
 
-## Features
-
-- Feature 1
-- Feature 2
-- ...
+## Contributor
+ursprash
 
 ## License
 
