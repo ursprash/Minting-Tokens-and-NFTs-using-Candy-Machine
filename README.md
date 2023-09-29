@@ -21,27 +21,24 @@ Creating a full UI for a Candy Machine and setting up an SPL token involves mult
    - We first need to create a new wallet for specifically devnet testing
 
 ```bash
-solana-keygen new --outfile ./wallet.json
+cd Module2-create-spl-token-js
 ```
-
-We can skip the password (by hitting Enter) as we will only use this wallet on devnet, so the funds are not important. We can confirm that the wallet we just generated is the wallet that the Solana CLI will use by running: 
-
+To run js file:
 ```bash
-solana config set --keypair ./wallet.json
+npm init -y
 ```
-
+```bash
+npm i
+```
+```bash
+node index.js
+```
 4.Establish a Connection to Your QuickNode RPC
 We will need to make sure our Solana CLI is connected to a node. You're welcome to use public nodes or deploy and manage your own infrastructure, however, if you'd like 8x faster response times you can leave the heavy lifting to us.
 With your endpoint on the Solana Devnet setup, you can now run this command, substituting YOUR_QUICKNODE_URL with the HTTP URL you have copied:
 
 ```bash
 solana config set --url YOUR_QUICKNODE_URL
-```
-
-Now to fund your wallet you can run the command:
-
-```bash
-solana airdrop 5
 ```
 
 ## Prepare NFT Assets
